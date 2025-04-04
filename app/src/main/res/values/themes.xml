@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.PhoneManager" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#fefcff</item> <!-- ✅ Milk white -->
+        <item name="colorPrimaryVariant">#e5e5ec</item> <!-- Optional: subtle variant -->
+        <item name="colorOnPrimary">#222222</item> <!-- ✅ Text color on milk white -->
+        <item name="colorSecondary">#b0bec5</item> <!-- Optional accent -->
+    </style>
+
+</resources>
