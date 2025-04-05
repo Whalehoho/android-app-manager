@@ -1,15 +1,10 @@
-package com.kc123.phonemanager
+package com.kc123.appmanager
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.kc123.phonemanager.R
+import com.kc123.appmanager.R
 import androidx.navigation.fragment.NavHostFragment
-import android.view.View
-
 
 
 class MainActivity : BaseActivity() {
@@ -23,6 +18,24 @@ class MainActivity : BaseActivity() {
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setupWithNavController(navController)
+
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.homeFragment -> {
+                    navController.popBackStack(R.id.homeFragment, false)
+                    true
+                }
+                R.id.folderFragment -> {
+                    navController.popBackStack(R.id.folderFragment, false)
+                    true
+                }
+                R.id.personalFragment -> {
+                    navController.popBackStack(R.id.personalFragment, false)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-package com.kc123.phonemanager
+package com.kc123.appmanager
 
 import org.junit.Test
 

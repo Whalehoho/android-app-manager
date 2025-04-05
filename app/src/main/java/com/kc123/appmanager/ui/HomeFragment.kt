@@ -1,4 +1,4 @@
-package com.kc123.phonemanager.ui
+package com.kc123.appmanager.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.kc123.phonemanager.R
+import androidx.navigation.fragment.findNavController
+import com.kc123.appmanager.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,7 +53,7 @@ class HomeFragment : Fragment() {
         setupCard(view, R.id.card_feature5, "Help", R.drawable.ic_help)
         setupCard(view, R.id.card_feature6, "Float", R.drawable.ic_button)
 
-        val card1 = view.findViewById<View>(R.id.card_feature1)
+        val card1 = view.findViewById<LinearLayout>(R.id.card_feature1)
         val card2 = view.findViewById<View>(R.id.card_feature2)
         val card3 = view.findViewById<View>(R.id.card_feature3)
         val card4 = view.findViewById<View>(R.id.card_feature4)
@@ -59,8 +61,7 @@ class HomeFragment : Fragment() {
         val card6 = view.findViewById<View>(R.id.card_feature6)
 
         card1.setOnClickListener {
-            Toast.makeText(requireContext(), "Feature 1 clicked", Toast.LENGTH_SHORT).show()
-            // Or navigate: findNavController().navigate(R.id.action_home_to_feature1)
+            findNavController().navigate(R.id.action_home_to_appListFragment)
         }
 
         card2.setOnClickListener {

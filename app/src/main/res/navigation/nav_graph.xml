@@ -7,7 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.kc123.phonemanager.ui.HomeFragment"
+        android:name="com.kc123.appmanager.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+    <action
+        android:id="@+id/action_home_to_appListFragment"
+        app:destination="@id/appListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/appListFragment"
+        android:name="com.kc123.appmanager.ui.shortcut.AppListFragment"
+        android:label="Installed Apps">
+        <action
+            android:id="@+id/action_home_to_appListFragment"
+            app:destination="@id/appListFragment" />
+    </fragment>
+
 </navigation>

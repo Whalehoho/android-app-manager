@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PhoneManager"
+rootProject.name = "AppManager"
 include(":app")
  

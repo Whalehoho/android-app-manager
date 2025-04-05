@@ -1,4 +1,4 @@
-package com.kc123.phonemanager.ui.theme
+package com.kc123.appmanager.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

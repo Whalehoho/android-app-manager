@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.kc123.phonemanager"
+    namespace = "com.kc123.appmanager"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.kc123.phonemanager"
+        applicationId = "com.kc123.appmanager"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
