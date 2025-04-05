@@ -11,9 +11,13 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
 
-    <action
-        android:id="@+id/action_home_to_appListFragment"
-        app:destination="@id/appListFragment" />
+        <action
+            android:id="@+id/action_home_to_appListFragment"
+            app:destination="@id/appListFragment" />
+
+        <action
+            android:id="@+id/action_home_to_bubbleShortcutFragment"
+            app:destination="@id/bubbleShortcutFragment" />
     </fragment>
 
     <fragment
@@ -35,6 +39,15 @@
         <argument
             android:name="packageName"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bubbleShortcutFragment"
+        android:name="com.kc123.appmanager.ui.shortcut.BubbleShortcutFragment"
+        android:label="Bubble Shortcuts">
+        <action
+            android:id="@+id/action_home_to_bubbleShortcutFragment"
+            app:destination="@id/bubbleShortcutFragment" />
     </fragment>
 
 

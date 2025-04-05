@@ -53,6 +53,7 @@ class AppListFragment : Fragment() {
     private fun getInstalledApps(): List<InstalledApp> {
         val pm = requireContext().packageManager
         val intent = Intent(Intent.ACTION_MAIN, null).apply {
+            // Only fetch launchable apps.
             addCategory(Intent.CATEGORY_LAUNCHER)
         }
 

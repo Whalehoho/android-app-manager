@@ -50,7 +50,7 @@
             android:exported="false"
             android:permission="android.permission.FOREGROUND_SERVICE"/>
 
-
+        <activity android:name=".ui.shortcut.AppListActivity" />
 
     </application>
 </manifest>

@@ -85,7 +85,12 @@ class HomeFragment : Fragment() {
         }
 
         card2.setOnClickListener {
-            Toast.makeText(requireContext(), "Feature 2 clicked", Toast.LENGTH_SHORT).show()
+            loadingSpinner.visibility = View.VISIBLE
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                findNavController().navigate(R.id.action_home_to_bubbleShortcutFragment)
+                loadingSpinner.visibility = View.GONE
+            }, 400)
         }
 
         card3.setOnClickListener {

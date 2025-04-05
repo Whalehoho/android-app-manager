@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kc123.appmanager.R
 import com.kc123.appmanager.model.InstalledApp
 
+// This adapter is used by feature#1: Pattern Shortcut
 class AppListAdapter(
     private var fullList: List<InstalledApp>,
     private val onClick: (InstalledApp) -> Unit
