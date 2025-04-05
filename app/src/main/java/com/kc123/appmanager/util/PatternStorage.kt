@@ -28,4 +28,15 @@ object PatternStorage {
                 } else null
             }
     }
+
+    fun isPatternAlreadyUsed(context: Context, newPattern: List<Pair<Int, Int>>, currentPackage: String): Boolean {
+        val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val newSerialized = newPattern.joinToString(",") { "${it.first}-${it.second}" }
+
+        return prefs.all.any { (key, value) ->
+            key != "$KEY_PREFIX$currentPackage" &&
+                    value == newSerialized
+        }
+    }
+
 }

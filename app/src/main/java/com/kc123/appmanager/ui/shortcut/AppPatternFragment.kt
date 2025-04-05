@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.kc123.appmanager.R
 import com.kc123.appmanager.custom.PatternGridView
@@ -81,8 +82,29 @@ class AppPatternFragment : Fragment() {
                 // Save in shared preferences
                 val pattern = currentPattern
                 if (pattern != null) {
+                    if (pattern.size < 2) {
+                        Toast.makeText(requireContext(), "Require at least 2 dots", Toast.LENGTH_SHORT).show()
+                        patternView.reset()
+                        currentPattern = emptyList()
+                        isEditing = true
+                        updateButton.text = "Save Pattern"
+                        patternView.isEnabled = true
+                        return@setOnClickListener
+                    }
+
                     packageName?.let {
-                        PatternStorage.savePattern(requireContext(), it, pattern)
+                        val isDuplicate = PatternStorage.isPatternAlreadyUsed(requireContext(), pattern, it)
+                        if (isDuplicate) {
+                            Toast.makeText(requireContext(), "This pattern is already used by another app!", Toast.LENGTH_SHORT).show()
+
+                            patternView.reset()
+                            currentPattern = emptyList()
+                            isEditing = true // stay in edit mode
+                            updateButton.text = "Save Pattern"
+                            patternView.isEnabled = true
+                        } else {
+                            PatternStorage.savePattern(requireContext(), it, pattern)
+                        }
                     }
                 }
             }
