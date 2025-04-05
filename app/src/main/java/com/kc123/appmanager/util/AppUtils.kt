@@ -21,4 +21,13 @@ object AppUtils {
             }
         }.sortedBy { it.appName }
     }
+
+    fun getAppIcon(context: Context, packageName: String): Drawable? {
+        return try {
+            context.packageManager.getApplicationIcon(packageName)
+        } catch (e: PackageManager.NameNotFoundException) {
+            null
+        }
+    }
+
 }
