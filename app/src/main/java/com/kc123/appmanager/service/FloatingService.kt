@@ -38,8 +38,8 @@ class FloatingService : Service() {
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         floatingView = inflater.inflate(R.layout.floating_button, null)
 
-        patternTarget = inflater.inflate(R.layout.floating_target_pattern, null)
-        bubbleTarget = inflater.inflate(R.layout.floating_target_bubble, null)
+//        patternTarget = inflater.inflate(R.layout.floating_target_pattern, null)
+//        bubbleTarget = inflater.inflate(R.layout.floating_target_bubble, null)
 
         // Clip image using clipToOutline
         floatingView.outlineProvider = ViewOutlineProvider.BACKGROUND
@@ -58,31 +58,31 @@ class FloatingService : Service() {
             PixelFormat.TRANSLUCENT
         )
 
-        patternTarget.visibility = View.GONE
-        bubbleTarget.visibility = View.GONE
+//        patternTarget.visibility = View.GONE
+//        bubbleTarget.visibility = View.GONE
 
-        targetParams.gravity = Gravity.TOP or Gravity.START
-        targetParams.x = 50
-        targetParams.y = 50
-        windowManager.addView(patternTarget, targetParams)
-
-        val bubbleParams = WindowManager.LayoutParams(
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.WRAP_CONTENT,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            else
-                WindowManager.LayoutParams.TYPE_PHONE,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-            PixelFormat.TRANSLUCENT
-        )
-
-        bubbleParams.gravity = Gravity.TOP or Gravity.START
-        bubbleParams.x = 50
-        bubbleParams.y = 50 + 300
-
-        bubbleTarget.visibility = View.GONE
-        windowManager.addView(bubbleTarget, bubbleParams)
+//        targetParams.gravity = Gravity.TOP or Gravity.START
+//        targetParams.x = 50
+//        targetParams.y = 50
+//        windowManager.addView(patternTarget, targetParams)
+//
+//        val bubbleParams = WindowManager.LayoutParams(
+//            WindowManager.LayoutParams.WRAP_CONTENT,
+//            WindowManager.LayoutParams.WRAP_CONTENT,
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+//                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+//            else
+//                WindowManager.LayoutParams.TYPE_PHONE,
+//            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+//            PixelFormat.TRANSLUCENT
+//        )
+//
+//        bubbleParams.gravity = Gravity.TOP or Gravity.START
+//        bubbleParams.x = 50
+//        bubbleParams.y = 50 + 300
+//
+//        bubbleTarget.visibility = View.GONE
+//        windowManager.addView(bubbleTarget, bubbleParams)
 
 
 
@@ -128,8 +128,8 @@ class FloatingService : Service() {
                         initialTouchY = event.rawY
                         isDragging = false
                         binView.visibility = View.VISIBLE
-                        patternTarget.visibility = View.VISIBLE
-                        bubbleTarget.visibility = View.VISIBLE
+//                        patternTarget.visibility = View.VISIBLE
+//                        bubbleTarget.visibility = View.VISIBLE
                         iconView.alpha = 1.0f
                         return true
                     }
@@ -140,18 +140,18 @@ class FloatingService : Service() {
                         val patternPos = IntArray(2)
                         val bubblePos = IntArray(2)
                         floatingView.getLocationOnScreen(floatPos)
-                        patternTarget.getLocationOnScreen(patternPos)
-                        bubbleTarget.getLocationOnScreen(bubblePos)
+//                        patternTarget.getLocationOnScreen(patternPos)
+//                        bubbleTarget.getLocationOnScreen(bubblePos)
 
-                        val fx = floatPos[0]
-                        val fy = floatPos[1]
-                        val patternHit = fx in patternPos[0]..(patternPos[0] + patternTarget.width) &&
-                                fy in patternPos[1]..(patternPos[1] + patternTarget.height)
-                        val bubbleHit = fx in bubblePos [0]..(bubblePos[0] + bubbleTarget.width) &&
-                                fy in bubblePos[1]..(bubblePos [1] + bubbleTarget.height)
-
-                        patternTarget.alpha = if (patternHit) 1.0f else 0.75f
-                        bubbleTarget.alpha = if (bubbleHit) 1.0f else 0.75f
+//                        val fx = floatPos[0]
+//                        val fy = floatPos[1]
+//                        val patternHit = fx in patternPos[0]..(patternPos[0] + patternTarget.width) &&
+//                                fy in patternPos[1]..(patternPos[1] + patternTarget.height)
+//                        val bubbleHit = fx in bubblePos [0]..(bubblePos[0] + bubbleTarget.width) &&
+//                                fy in bubblePos[1]..(bubblePos [1] + bubbleTarget.height)
+//
+//                        patternTarget.alpha = if (patternHit) 1.0f else 0.75f
+//                        bubbleTarget.alpha = if (bubbleHit) 1.0f else 0.75f
 
                         val dx = event.rawX - initialTouchX
                         val dy = event.rawY - initialTouchY
@@ -172,9 +172,9 @@ class FloatingService : Service() {
                     // Evaluate drop behavior
                     MotionEvent.ACTION_UP -> {
                         binView.visibility = View.GONE
-                        patternTarget.visibility = View.GONE
-                        bubbleTarget.visibility = View.GONE
-                        checkDropToTarget()
+//                        patternTarget.visibility = View.GONE
+//                        bubbleTarget.visibility = View.GONE
+//                        checkDropToTarget()
 
 
                         return if (isDragging) {
@@ -184,7 +184,7 @@ class FloatingService : Service() {
                             true
                         } else {
                             // Tap action
-//                            showPatternDialog()
+                            showPatternDialog()
 //                            showOverlaySwitcher()
                             iconView.alpha = 0.7f
                             true
