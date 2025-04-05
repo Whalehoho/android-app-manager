@@ -11,6 +11,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewOutlineProvider
 import android.view.WindowManager
 import android.widget.ImageView
 import com.kc123.appmanager.R
@@ -32,6 +33,11 @@ class FloatingService : Service() {
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         floatingView = inflater.inflate(R.layout.floating_button, null)
 
+        // Clip image using clipToOutline
+        floatingView.outlineProvider = ViewOutlineProvider.BACKGROUND
+        floatingView.clipToOutline = true
+
+
         params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
@@ -50,17 +56,10 @@ class FloatingService : Service() {
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         windowManager.addView(floatingView, params)
 
-        floatingView.findViewById<ImageView>(R.id.floating_icon).setOnClickListener {
-            showPatternDialog()
-        }
 
         // Reference to the icon inside the floating layout
         val iconView = floatingView.findViewById<ImageView>(R.id.floating_icon)
-
-        // Launch overlay when clicked
-        iconView.setOnClickListener {
-            showPatternDialog()
-        }
+        iconView.alpha = 0.7f
 
         // Enable drag behavior
         iconView.setOnTouchListener(object : View.OnTouchListener {
@@ -81,6 +80,7 @@ class FloatingService : Service() {
                         initialTouchY = event.rawY
                         isDragging = false
                         binView.visibility = View.VISIBLE
+                        iconView.alpha = 1.0f
                         return true
                     }
 
@@ -109,10 +109,12 @@ class FloatingService : Service() {
                         return if (isDragging) {
                             // Drop action
                             checkDropToBin()
+                            iconView.alpha = 0.7f
                             true
                         } else {
                             // Tap action
                             showPatternDialog()
+                            iconView.alpha = 0.7f
                             true
                         }
                     }

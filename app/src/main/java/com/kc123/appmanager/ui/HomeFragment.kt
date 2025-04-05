@@ -59,10 +59,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupCard(view, R.id.card_feature1, "App Shortcut", R.drawable.ic_shortcut)
-        setupCard(view, R.id.card_feature2, "App Icon", R.drawable.ic_apps)
+        setupCard(view, R.id.card_feature1, "Pattern Shortcut", R.drawable.ic_shortcut)
+        setupCard(view, R.id.card_feature2, "Bubble Shortcut", R.drawable.ic_bubble)
         setupCard(view, R.id.card_feature3, "App Title", R.drawable.ic_text)
-        setupCard(view, R.id.card_feature4, "App Lock", R.drawable.ic_lock)
+        setupCard(view, R.id.card_feature4, "App Icon", R.drawable.ic_apps)
         setupCard(view, R.id.card_feature5, "Help", R.drawable.ic_help)
         setupCard(view, R.id.card_feature6, "Float", R.drawable.ic_button)
 

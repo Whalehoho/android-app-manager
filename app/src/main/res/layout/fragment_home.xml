@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:paddingStart="16dp"
-            android:text="App Manager"
+            android:text="Console"
             android:textColor="#222222"
             android:textSize="24sp"
             android:textStyle="bold"

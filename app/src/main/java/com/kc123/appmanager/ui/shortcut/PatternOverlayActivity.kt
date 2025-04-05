@@ -43,7 +43,9 @@ class PatternOverlayActivity : Activity() {
                 Toast.makeText(context, "No matching pattern found", Toast.LENGTH_SHORT).show()
             }
 
-            finish() // Close overlay
+            // Close overlay
+            finish()
         }
     }
+
 }
