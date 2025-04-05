@@ -6,4 +6,12 @@
         <item name="colorSecondary">#b0bec5</item> <!-- Optional accent -->
     </style>
 
+    <style name="Theme.App.TransparentDialog" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
 </resources>

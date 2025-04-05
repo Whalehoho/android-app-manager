@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="64dp"
+    android:layout_height="64dp"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center"
+    android:background="@drawable/floating_button_bg">
+
+    <ImageView
+        android:id="@+id/floating_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/ic_launcher"/>
+</LinearLayout>

@@ -39,4 +39,28 @@ object PatternStorage {
         }
     }
 
+    fun getAllPatterns(context: Context): Map<String, List<Pair<Int, Int>>> {
+        val prefs = getPrefs(context)
+        val allEntries = prefs.all
+        val patternMap = mutableMapOf<String, List<Pair<Int, Int>>>()
+
+        for ((key, value) in allEntries) {
+            if (key.startsWith(KEY_PREFIX) && value is String) {
+                val packageName = key.removePrefix(KEY_PREFIX)
+                val pattern = value.split(",").mapNotNull {
+                    val parts = it.split("-")
+                    if (parts.size == 2) {
+                        val row = parts[0].toIntOrNull()
+                        val col = parts[1].toIntOrNull()
+                        if (row != null && col != null) Pair(row, col) else null
+                    } else null
+                }
+                patternMap[packageName] = pattern
+            }
+        }
+
+        return patternMap
+    }
+
+
 }

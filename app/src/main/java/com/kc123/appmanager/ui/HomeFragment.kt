@@ -1,5 +1,7 @@
 package com.kc123.appmanager.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +16,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.kc123.appmanager.R
+import android.provider.Settings
+import com.kc123.appmanager.service.FloatingService
+import android.app.Activity.RESULT_OK
+import android.app.Activity
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,9 +101,31 @@ class HomeFragment : Fragment() {
         }
 
         card6.setOnClickListener {
-            Toast.makeText(requireContext(), "Feature 6 clicked", Toast.LENGTH_SHORT).show()
+            val context = requireContext()
+            if (!Settings.canDrawOverlays(context)) {
+                val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${context.packageName}"))
+                overlayPermissionLauncher.launch(intent)
+            } else {
+                startFloatingService()
+            }
         }
+
     }
+
+    private fun startFloatingService() {
+        val serviceIntent = Intent(requireContext(), FloatingService::class.java)
+        requireContext().startService(serviceIntent)
+    }
+
+
+    private val overlayPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (Settings.canDrawOverlays(requireContext())) {
+                startFloatingService()
+            }
+        }
+
+
 
     private fun setupCard(parent: View, cardId: Int, title: String, iconResId: Int) {
         val card = parent.findViewById<View>(cardId)
