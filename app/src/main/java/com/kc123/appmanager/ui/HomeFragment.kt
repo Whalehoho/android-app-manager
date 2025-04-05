@@ -1,12 +1,15 @@
 package com.kc123.appmanager.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -60,8 +63,15 @@ class HomeFragment : Fragment() {
         val card5 = view.findViewById<View>(R.id.card_feature5)
         val card6 = view.findViewById<View>(R.id.card_feature6)
 
+        val loadingSpinner = view.findViewById<ProgressBar>(R.id.globalLoadingSpinner)
+
         card1.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_appListFragment)
+            loadingSpinner.visibility = View.VISIBLE
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                findNavController().navigate(R.id.action_home_to_appListFragment)
+                loadingSpinner.visibility = View.GONE
+            }, 400)
         }
 
         card2.setOnClickListener {

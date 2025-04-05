@@ -1,10 +1,12 @@
 package com.kc123.appmanager.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.kc123.appmanager.R
 import com.kc123.appmanager.model.InstalledApp
@@ -44,7 +46,13 @@ class AppListAdapter(
         val app = filteredList[position]
         holder.name.text = app.name
         holder.icon.setImageDrawable(app.icon)
-        holder.itemView.setOnClickListener { onClick(app) }
+        holder.itemView.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("appName", app.name)
+                putString("packageName", app.packageName)
+            }
+            it.findNavController().navigate(R.id.appPatternFragment, bundle)
+        }
     }
 }
 

@@ -25,4 +25,17 @@
             app:destination="@id/appListFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/appPatternFragment"
+        android:name="com.kc123.appmanager.ui.shortcut.AppPatternFragment"
+        android:label="Pattern Lock">
+        <argument
+            android:name="appName"
+            app:argType="string" />
+        <argument
+            android:name="packageName"
+            app:argType="string" />
+    </fragment>
+
+
 </navigation>

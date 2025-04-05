@@ -1,83 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="#fefcff"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- Header -->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="App Manager"
-        android:textColor="#222222"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:paddingStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fefcff"
+        android:fitsSystemWindows="true"
+        android:padding="16dp">
 
-    <GridLayout
-        android:id="@+id/featureGrid"
+        <!-- Header -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:paddingStart="16dp"
+            android:text="App Manager"
+            android:textColor="#222222"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <GridLayout
+            android:id="@+id/featureGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:useDefaultMargins="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <!-- Feature Buttons -->
+            <include
+                android:id="@+id/card_feature1"
+                layout="@layout/item_feature_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+            <include
+                android:id="@+id/card_feature2"
+                layout="@layout/item_feature_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+            <include
+                android:id="@+id/card_feature3"
+                layout="@layout/item_feature_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+            <include
+                android:id="@+id/card_feature4"
+                layout="@layout/item_feature_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+            <include
+                android:id="@+id/card_feature5"
+                layout="@layout/item_feature_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+            <include
+                android:id="@+id/card_feature6"
+                layout="@layout/item_feature_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp" />
+
+
+        </GridLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:id="@+id/globalLoadingSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:useDefaultMargins="true"
-        android:alignmentMode="alignMargins"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="0dp" >
-
-        <!-- Feature Buttons -->
-        <include
-            android:id="@+id/card_feature1"
-            layout="@layout/item_feature_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-        <include
-            android:id="@+id/card_feature2"
-            layout="@layout/item_feature_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-        <include
-            android:id="@+id/card_feature3"
-            layout="@layout/item_feature_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-        <include
-            android:id="@+id/card_feature4"
-            layout="@layout/item_feature_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-        <include
-            android:id="@+id/card_feature5"
-            layout="@layout/item_feature_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-        <include
-            android:id="@+id/card_feature6"
-            layout="@layout/item_feature_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
-
-
-    </GridLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/progress_bar"
+        android:visibility="gone" />
+</FrameLayout>

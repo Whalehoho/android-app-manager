@@ -6,3 +6,7 @@
 - [ ] Change app titles
 - [ ] App lock
 - [ ] Floating button
+
+
+Android stores patterns using SharedPreferences at:
+/data/data/com.kc123.appmanager/shared_prefs/pattern_prefs.xml
