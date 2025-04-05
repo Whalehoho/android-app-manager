@@ -5,12 +5,12 @@
 - [ ] Change app icons
 - [ ] Change app titles
 - [ ] App lock
-- [ ] Floating button
+- [x] Floating button
 
 
 Android stores patterns using SharedPreferences at:
 /data/data/com.kc123.appmanager/shared_prefs/pattern_prefs.xml
 
 ## Preview
-![Shortcut](assets/demo.gif)
+<img src="assets/demo.gif" alt="Shortcut" height="400"/>
 
