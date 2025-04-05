@@ -11,3 +11,6 @@
 Android stores patterns using SharedPreferences at:
 /data/data/com.kc123.appmanager/shared_prefs/pattern_prefs.xml
 
+## Preview
+![Shortcut](assets/demo.gif)
+
